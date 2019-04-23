@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RSAKillerByEiler"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="500">
+    <Window.DataContext>
+        <local:MainVM/>
+    </Window.DataContext>
+    
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         
+        <StackPanel Orientation="Horizontal" Margin="20">
+            <TextBlock Text = "Enter eiler value (int):"/>
+            <TextBox Margin="20,0" MinWidth="100" Text="{Binding EilerValue, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Start" Command="{Binding StartCommand}"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" HorizontalAlignment="Center" HorizontalGridLinesBrush="DarkGray"
+                  RowBackground="LightGray" AlternatingRowBackground="White" ItemsSource="{Binding List}">
+    
+        </DataGrid>
+
     </Grid>
 </Window>
